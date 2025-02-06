@@ -1,0 +1,22 @@
+<h1>[TextBookTitle] Table of Contents</h1>
+
+<ol class="list-group">
+<% @book_toc.each do |chapter| %>
+    <li class="list-group-item">
+    <a href="https://www.flatworldbooks/<%= @book_id %>/<%= chapter['element_id'] %>">
+        <b><%= chapter['title'] %></b></a>
+
+    <ul class="list-unstyled">
+        <% chapter['sections'].each do |section| %>
+            <li>
+            <span class="badge badge-pill badge-primary">
+                <%= section['ordinal'] %>
+            </span>
+            <a href="https://www.flatworldbooks/<%= @book_id %>/<%= section['element_id'] %>">
+                <%= section['title'] %></a>
+            </li>
+        <% end %>
+    </ul>
+    </li>
+<% end %>
+</ol>
